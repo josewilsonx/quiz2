@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz sobre Letras de Músicas</title>
+    <link rel="stylesheet" href="../css/quiz3.css">
+</head>
+<body>
+    <div class="quiz-container">
+        <h1>Quiz sobre Letras de Músicas</h1>
+        <div id="quiz">
+            <div class="question">
+                <h3>1. "I stay up too late, got nothing in my brain..."</h3>
+                <p>Complete: "That's what _ __ _ ___"</p>
+                <ul>
+                    <li><input type="radio" name="q1" value="That's what they say">That's what they say</li>
+                    <li><input type="radio" name="q1" value="That's what you know">That's what you know</li>
+                    <li><input type="radio" name="q1" value="That's what I do">That's what I do</li>
+                    <li><input type="radio" name="q1" value="That's what they do">That's what they do</li>
+                </ul>
+            </div>
+
+            <div class="question">
+                <h3>2. "I got my ticket for the long way 'round, two bottle 'a whiskey for the way..."</h3>
+                <p>Complete: "And I sure would like some __ __ __"</p>
+                <ul>
+                    <li><input type="radio" name="q2" value="company">company</li>
+                    <li><input type="radio" name="q2" value="fun">fun</li>
+                    <li><input type="radio" name="q2" value="friends">friends</li>
+                    <li><input type="radio" name="q2" value="adventure">adventure</li>
+                </ul>
+            </div>
+
+            <div class="question">
+                <h3>3. "Cause baby, now we got bad blood..."</h3>
+                <p>Complete: "You know it used to be _ __"</p>
+                <ul>
+                    <li><input type="radio" name="q3" value="good stuff">good stuff</li>
+                    <li><input type="radio" name="q3" value="so good">so good</li>
+                    <li><input type="radio" name="q3" value="true love">true love</li>
+                    <li><input type="radio" name="q3" value="great times">great times</li>
+                </ul>
+            </div>
+
+            <div class="question">
+                <h3>4. "I'm off the deep end, watch as I dive in..."</h3>
+                <p>Complete: "I'll never __ __ __"</p>
+                <ul>
+                    <li><input type="radio" name="q4" value="meet the ground">meet the ground</li>
+                    <li><input type="radio" name="q4" value="come back up">come back up</li>
+                    <li><input type="radio" name="q4" value="give up now">give up now</li>
+                    <li><input type="radio" name="q4" value="turn around">turn around</li>
+                </ul>
+            </div>
+
+            <div class="question">
+                <h3>5. "Cause if you like the way you look that much..."</h3>
+                <p>Complete: "Oh baby, you should __ __ __"</p>
+                <ul>
+                    <li><input type="radio" name="q5" value="love yourself">love yourself</li>
+                    <li><input type="radio" name="q5" value="try again">try again</li>
+                    <li><input type="radio" name="q5" value="go away">go away</li>
+                    <li><input type="radio" name="q5" value="see me">see me</li>
+                </ul>
+            </div>
+
+            <button id="submit">Enviar</button>
+            <div id="results"></div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('submit').addEventListener('click', function() {
+            const answers = [
+                "That's what they say",
+                'company',
+                'so good',
+                'meet the ground',
+                'love yourself'
+            ];
+            const questions = document.querySelectorAll('.question');
+            let score = 0;
+
+            questions.forEach((question, index) => {
+                const selectedAnswer = question.querySelector('input[type="radio"]:checked');
+                const correctAnswer = answers[index];
+                question.querySelectorAll('input[type="radio"]').forEach(input => {
+                    if (input.value === correctAnswer) {
+                        input.parentElement.style.color = 'green'; // Resposta correta
+                    } else {
+                        input.parentElement.style.color = ''; // Resetar cor
+                    }
+                });
+
+                if (selectedAnswer) {
+                    if (selectedAnswer.value === correctAnswer) {
+                        score++;
+                    } else {
+                        selectedAnswer.parentElement.style.color = 'red'; // Resposta errada
+                    }
+                }
+            });
+
+            document.getElementById('results').innerText = `Você marcou ${score} de ${answers.length}`;
+        });
+    </script>
+</body>
+</html>

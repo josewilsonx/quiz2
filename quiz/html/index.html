@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+   
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+
+        <link rel="stylesheet" href="../css/style.css"> 
+</head>
+<body>
+
+
+    <div id="home">
+        <h1>Bem-vindo ao Quiz!</h1>
+        <p>Descubra mais sobre você com nossos quizzes divertidos.</p>
+        <button onclick="showQuizzes()">Começar</button>
+    </div>
+
+    <div id="quizzes" style="display:none;">
+        <h1>Escolha seu Quiz</h1>
+        <ul class="quiz-list">
+            <li class="quiz-item"><a href="quiz1.html">Conhecimentos Gerais</a></li>
+            <li class="quiz-item"><a href="quiz2.html">O Quanto vc Conhece Sobre Stranger Things ?</a></li>
+            <li class="quiz-item"><a href="quiz3.html">O Quanto vc Conhece Sobre Game of thrones ?</a></li>
+            <li class="quiz-item"><a href="quiz4.html">O Quanto vc Conhece Sobre Senhor dos Aneis ?</a></li>
+            <li class="quiz-item"><a href="quiz5.html">O Quanto vc Conhece Sobre Harry Potter ?</a></li>
+            <li class="quiz-item"><a href="quiz6.html">O Quanto vc Conhece Sobre Titanic ?</a></li>
+            <li class="quiz-item"><a href="quiz7.html">Complete a Musica Versão POP</a></li>
+        </ul>
+        </ul>
+        </ul>
+        <button onclick="showHome()">Voltar à Página Inicial</button>
+    </div>
+
+    <script>
+        function showQuizzes() {
+            document.getElementById('home').style.display = 'none';
+            document.getElementById('quizzes').style.display = 'block';
+        }
+
+        function showHome() {
+            document.getElementById('quizzes').style.display = 'none';
+            document.getElementById('home').style.display = 'block';
+        }
+    </script>
+
+</body>
+</html>
+

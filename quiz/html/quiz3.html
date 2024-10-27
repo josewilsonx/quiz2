@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz sobre Game of Thrones</title>
+    <link rel="stylesheet" href="../css/quiz3.css">
+</head>
+<body>
+    <div class="quiz-container">
+        <h1>Quiz sobre Game of Thrones</h1>
+        <div id="quiz">
+            <div class="question">
+                <h3>1. Quem é conhecida como a "Mãe dos Dragões"?</h3>
+                <ul>
+                    <li><input type="radio" name="q1" id="q1a" value="Cersei"><label for="q1a">Cersei Lannister</label></li>
+                    <li><input type="radio" name="q1" id="q1b" value="Sansa"><label for="q1b">Sansa Stark</label></li>
+                    <li><input type="radio" name="q1" id="q1c" value="Daenerys"><label for="q1c">Daenerys Targaryen</label></li>
+                    <li><input type="radio" name="q1" id="q1d" value="Arya"><label for="q1d">Arya Stark</label></li>
+                </ul>
+            </div>
+
+            <div class="question">
+                <h3>2. Qual é o lema da Casa Stark?</h3>
+                <ul>
+                    <li><input type="radio" name="q2" id="q2a" value="Fire"><label for="q2a">Fogo e Sangue</label></li>
+                    <li><input type="radio" name="q2" id="q2b" value="Winter"><label for="q2b">O Inverno Está Chegando</label></li>
+                    <li><input type="radio" name="q2" id="q2c" value="Hear"><label for="q2c">Ouça Meu Rugido</label></li>
+                    <li><input type="radio" name="q2" id="q2d" value="We"><label for="q2d">Nós Não Semeamos</label></li>
+                </ul>
+            </div>
+
+            <div class="question">
+                <h3>3. Quem se senta no Trono de Ferro ao final da série?</h3>
+                <ul>
+                    <li><input type="radio" name="q3" id="q3a" value="Jon"><label for="q3a">Jon Snow</label></li>
+                    <li><input type="radio" name="q3" id="q3b" value="Daenerys"><label for="q3b">Daenerys Targaryen</label></li>
+                    <li><input type="radio" name="q3" id="q3c" value="Bran"><label for="q3c">Bran Stark</label></li>
+                    <li><input type="radio" name="q3" id="q3d" value="Tyrion"><label for="q3d">Tyrion Lannister</label></li>
+                </ul>
+            </div>
+
+            <button id="submit">Enviar</button>
+            <div id="results"></div>
+        </div>
+    </div>
+    <script>
+        document.getElementById('submit').addEventListener('click', function() {
+            const answers = ['Daenerys', 'O Inverno Está Chegando', 'Bran']; // Respostas corretas
+            let score = 0;
+
+            document.querySelectorAll('.question').forEach((questionEl, index) => {
+                const selectedOption = questionEl.querySelector('input[type="radio"]:checked');
+                const correctAnswer = answers[index];
+
+                questionEl.querySelectorAll('li').forEach(li => {
+                    li.classList.remove('correct', 'incorrect');
+                });
+
+                if (selectedOption) {
+                    const isCorrect = selectedOption.nextElementSibling.textContent === correctAnswer; // Verifica se a opção selecionada está correta
+                    if (isCorrect) {
+                        selectedOption.parentElement.classList.add('correct');
+                        score++;
+                    } else {
+                        selectedOption.parentElement.classList.add('incorrect');
+                        questionEl.querySelector(`input[value="${correctAnswer}"]`).parentElement.classList.add('correct'); // Mostra a resposta correta
+                    }
+                } else {
+                    questionEl.querySelector(`input[value="${correctAnswer}"]`).parentElement.classList.add('correct'); // Mostra a resposta correta se nenhuma opção foi selecionada
+                }
+            });
+
+            document.getElementById('results').innerText = `Você marcou ${score} de ${answers.length}`; // Atualiza a mensagem com o número correto de perguntas
+        });
+    </script>
+</body>
+</html>
